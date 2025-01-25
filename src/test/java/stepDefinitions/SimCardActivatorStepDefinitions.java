@@ -39,23 +39,18 @@ public class SimCardActivatorStepDefinitions {
         headers.set("Content-Type", "application/json");
 
         HttpEntity<Map<String, Object>> activateRequest = new HttpEntity<>(payload, headers);
-        System.out.println("(Test) Request body to the activate Service: \t" + payload);
-        System.out.println("(Test) Send request to uri: \t" + uri);
 
         restTemplate.postForObject( uri, activateRequest, Map.class );
     }
 
-    @When("I fetch the GET \\/customer endpoint of the activation service with {int}")
-    public void i_fetch_the_get_customer_endpoint_of_the_activation_service_with( Integer simCardId ) {
+    @When("I fetch the GET \\/customer endpoint of the activation service with {long}")
+    public void i_fetch_the_get_customer_endpoint_of_the_activation_service_with( Long simCardId ) {
 
         String uri = "http://localhost:8080/customer?simCardId=" + simCardId;
-
-        System.out.println("(Test) Send request to uri: \t" + uri);
 
         Map customerResponse = restTemplate.getForObject( uri, Map.class );
 
         active = customerResponse.get("active").toString();
-        System.out.println("(Test) Result of /customer fetch: \t" + active);
     }
 
     @Then("It should respond with {string}")

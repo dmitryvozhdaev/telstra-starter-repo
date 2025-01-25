@@ -8,8 +8,12 @@ import java.util.Optional;
 @Service
 public class CustomerDBController {
 
+    private final CustomerRepository repository;
+
     @Autowired
-    private CustomerRepository repository;
+    public CustomerDBController(CustomerRepository repository) {
+        this.repository = repository;
+    }
 
     public void saveCustomer( Customer customer ) {
         repository.save(customer);

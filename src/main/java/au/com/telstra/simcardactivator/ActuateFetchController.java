@@ -21,14 +21,7 @@ public class ActuateFetchController {
         headers.set("Content-Type", "application/json");
 
         HttpEntity<Map<String, Object>> actuateRequest = new HttpEntity<>(body, headers);
-        System.out.println("Request body to the actuate Service: \t" + body);
-        System.out.println("Request headers to the actuate Service: \t" + headers);
-        System.out.println("Send request to uri: \t" + uri);
 
-        Map<String, Object> actuateResponse = restTemplate.postForObject( uri, actuateRequest, Map.class );
-
-        System.out.println("Response from the actuate Service: \t" + actuateResponse);
-
-        return actuateResponse;
+        return restTemplate.postForObject( uri, actuateRequest, Map.class );
     }
 }

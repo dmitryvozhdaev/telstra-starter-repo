@@ -14,19 +14,19 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String iccid;
+    private Long iccid;
     private String customerEmail;
     private Boolean active;
 
     protected Customer() {}
 
-    public Customer(String iccid, String customerEmail, Boolean active ) {
+    public Customer(Long iccid, String customerEmail, Boolean active ) {
         this.iccid = iccid;
         this.customerEmail = customerEmail;
-            this.active = active;
+        this.active = active;
     }
 
-    public void setIccid(String iccid) {
+    public void setIccid(Long iccid) {
         this.iccid = iccid;
     }
 
